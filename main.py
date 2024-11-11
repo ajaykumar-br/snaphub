@@ -6,8 +6,15 @@ import google.generativeai as genai
 from google.cloud import storage
 from flask import Flask, redirect, request, render_template, send_from_directory, session, url_for
 
+current_directory = os.getcwd()
+filePath = os.path.join(current_directory, "snaphub/snaphub-keys.json")
+
+with open(filePath) as config_file:
+    config = json.load(config_file)
+    print(config)
+
 app = Flask(__name__)
-app.secret_key = "snaphub_secret_key"
+app.secret_key = config["app_secret"]
 
 os.makedirs('files', exist_ok = True)
 bucket_name = 'snaphubimages'
@@ -15,11 +22,11 @@ storage_client = storage.Client()
 bucket = storage_client.bucket(bucket_name)
 
 # configurations
-genai.configure(api_key="AIzaSyDO-w4ViDkgWNsy4KCToFutGf8HKeqWDXI")
+genai.configure(api_key=config["genai_secret"])
 
 # firebase
 firebaseConfig = {
-  "apiKey": "AIzaSyB2hsyureg-lJAerWr4NSRB2N5mTW3kg7Q",
+  "apiKey": config["firebase_secret"],
   "authDomain": "balmy-sanctuary-436201-r2.firebaseapp.com",
   "databaseURL": "https://balmy-sanctuary-436201-r2-default-rtdb.firebaseio.com",
   "projectId": "balmy-sanctuary-436201-r2",

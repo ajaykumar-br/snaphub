@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snaphub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="d-flex align-items-center justify-content-center vh-100 bg-info-subtle" data-bs-theme="blue">
+    <div class="container">
+        <!-- Title Section -->
+        <h1 class="text-center text-info mb-5">SNAPHUB</h1>
+
+        <!-- File Upload Section -->
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <form method="post" enctype="multipart/form-data" action="/upload"
+                    class="p-4 border rounded shadow-sm bg-white">
+                    <div class="mb-3">
+                        <label for="fileInput" class="form-label">Choose an image file</label>
+                        <input name="form_file" accept="image/jpeg,image/jpg" type="file" class="form-control"
+                            id="fileInput" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary w-100">Upload Image</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Uploaded Files List -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6 col-md-8">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                    <h5 class="text-center text-secondary">Uploaded Images</h5>
+                    <ul class="list-group list-group-flush">
+                        {% for file in files %}
+                        <li class="list-group-item">
+                            <a href="{{ url_for('view_file', filename=file, user_id=user_id) }}"
+                                class="text-decoration-none text-dark">
+                                {{ file }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout Section -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-6 col-md-8 text-center">
+                <form action="/logout" method="post">
+                    <button type="submit" class="btn btn-danger w-100">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
