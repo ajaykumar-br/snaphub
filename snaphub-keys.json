@@ -1,0 +1,5 @@
+{
+  "app_secret": "snaphub_secret_key",
+  "firebase_secret": "AIzaSyB2hsyureg-lJAerWr4NSRB2N5mTW3kg7Q",
+  "genai_secret": "AIzaSyDO-w4ViDkgWNsy4KCToFutGf8HKeqWDXI"
+}
