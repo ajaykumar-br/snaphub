@@ -7,7 +7,7 @@ from google.cloud import storage
 from flask import Flask, redirect, request, render_template, send_from_directory, session, url_for
 
 current_directory = os.getcwd()
-filePath = os.path.join(current_directory, "snaphub/snaphub-keys.json")
+filePath = os.path.join(current_directory, "snaphub-keys.json")
 
 with open(filePath) as config_file:
     config = json.load(config_file)

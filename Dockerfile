@@ -1,9 +1,10 @@
-FROM 
+FROM python:3.11-slim-buster
 
-COPY 
+WORKDIR /app
 
-RUN 
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
-COPY 
+COPY . .
 
-CMD [ "" ]
+CMD ["flask", "run"]
