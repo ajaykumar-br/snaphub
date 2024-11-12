@@ -125,7 +125,7 @@ def generativeAI(save_file):
         }
     ]
     )
-    response = chat_session.send_message("INSERT_INPUT_HERE")
+    response = chat_session.send_message("Generate the title and description for the below image and return the response in json format")
     return response.text
 
 @app.route('/upload', methods=['POST'])
